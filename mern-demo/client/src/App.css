@@ -13,7 +13,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   padding: 24px;
 }
 
@@ -58,10 +58,44 @@ button {
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
+  transition: background 0.2s;
 }
 
 button:hover {
   background: #1d4ed8;
+}
+
+/* Kiểu dáng cho nút trong bảng (Sửa / Xóa) */
+td button {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+/* Nút Sửa (Màu vàng/cam) */
+td button:first-child {
+  background: #f59e0b;
+}
+
+td button:first-child:hover {
+  background: #d97706;
+}
+
+/* Nút Xóa (Màu đỏ) */
+td button:last-child {
+  background: #ef4444;
+}
+
+td button:last-child:hover {
+  background: #dc2626;
+}
+
+/* Nút Hủy trong Form (Màu xám) */
+form button[type="button"] {
+  background: #6b7280;
+}
+
+form button[type="button"]:hover {
+  background: #4b5563;
 }
 
 table {
