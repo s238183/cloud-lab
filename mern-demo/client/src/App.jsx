@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API_URL = 'https://special-guacamole-qvpqqr65gx49f9444-5000.app.github.dev/api/students';
+const API_URL = 'http://localhost:5000/api/students';
 
 function App() {
   const [students, setStudents] = useState([]);
