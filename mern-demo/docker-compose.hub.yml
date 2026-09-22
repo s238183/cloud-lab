@@ -7,7 +7,7 @@ services:
       MONGODB_URI: ${MONGODB_URI}
 
   frontend:
-    image: hien238183/mern-frontend:1.0
+    image: hien238183/mern-frontend:2.0
     ports:
       - "4173:4173"
     command: npm run preview -- --host 0.0.0.0

@@ -81,37 +81,37 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Quản Lý Sinh Viên</h1>
+      <h1>Quản Lý Sinh Viên_version 2</h1>
 
       <h2>{editingId ? 'Sửa thông tin sinh viên' : 'Thêm sinh viên'}</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="MSSV"
+          placeholder="MSSV: "
           value={studentId}
           onChange={(e) => setStudentId(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Họ tên"
+          placeholder="Name: "
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Emai: "
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="submit">{editingId ? 'Cập nhật' : 'Thêm sinh viên'}</button>
+        <button type="submit">{editingId ? 'Update' : 'Add'}</button>
         {editingId && (
           <button type="button" onClick={handleCancelEdit} style={{ marginLeft: '8px' }}>
-            Hủy
+            Cancel
           </button>
         )}
       </form>
 
-      <h2>Danh sách sinh viên</h2>
+      <h2>List</h2>
       <table>
         <thead>
           <tr>
@@ -130,7 +130,7 @@ function App() {
               <td>
                 <button onClick={() => handleEdit(sv)}>Sửa</button>
                 <button onClick={() => handleDelete(sv._id)} style={{ marginLeft: '8px' }}>
-                  Xóa
+                  Delete
                 </button>
               </td>
             </tr>
