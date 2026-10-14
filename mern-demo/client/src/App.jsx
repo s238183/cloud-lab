@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = '/api/students';
 
 function App() {
   const [students, setStudents] = useState([]);
   const [studentId, setStudentId] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [editingId, setEditingId] = useState(null); // Quản lý ID sinh viên đang sửa
+  const [editingId, setEditingId] = useState(null);
 
   const fetchStudents = async () => {
     try {
@@ -24,7 +24,6 @@ function App() {
     fetchStudents();
   }, []);
 
-  // Xử lý gửi Form (Phân biệt Thêm mới hoặc Cập nhật)
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!studentId || !name || !email) {
@@ -34,11 +33,9 @@ function App() {
 
     try {
       if (editingId) {
-        // CÂU 61: Gọi API PUT để cập nhật sinh viên
         await axios.put(`${API_URL}/${editingId}`, { studentId, name, email });
         setEditingId(null);
       } else {
-        // Gọi API POST để thêm sinh viên mới
         await axios.post(API_URL, { studentId, name, email });
       }
 
@@ -51,7 +48,6 @@ function App() {
     }
   };
 
-  // Đổ dữ liệu sinh viên vào Form để sửa
   const handleEdit = (sv) => {
     setEditingId(sv._id);
     setStudentId(sv.studentId);
@@ -59,7 +55,6 @@ function App() {
     setEmail(sv.email);
   };
 
-  // Hủy chế độ sửa
   const handleCancelEdit = () => {
     setEditingId(null);
     setStudentId('');
@@ -67,7 +62,6 @@ function App() {
     setEmail('');
   };
 
-  // CÂU 62: Gọi API DELETE để xóa sinh viên
   const handleDelete = async (id) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa sinh viên này?')) {
       try {
@@ -82,7 +76,7 @@ function App() {
   return (
     <div className="container">
       <h1>Quản Lý Sinh Viên_version 2</h1>
-
+      <p style={{ color: 'green', fontWeight: 'bold' }}>Phiên bản: v2.0</p>
       <h2>{editingId ? 'Sửa thông tin sinh viên' : 'Thêm sinh viên'}</h2>
       <form onSubmit={handleSubmit}>
         <input

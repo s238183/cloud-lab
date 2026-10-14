@@ -42,6 +42,14 @@ app.get('/api/students', async (req, res) => {
   }
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'UP',
+    timestamp: new Date(),
+    uptime: process.uptime()
+  });
+});
+
 app.post('/api/students', async (req, res) => {
   try {
     const newStudent = await Student.create(req.body);
@@ -74,10 +82,9 @@ app.delete('/api/students/:id', async (req, res) => {
 });
 
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Kết nối MongoDB Atlas thành công!'))
+  .then(() => console.log('Kết nối MongoDB Atlas thành công! (v1.2)'))
   .catch((err) => console.error('Lỗi kết nối MongoDB:', err));
 
-
 app.listen(PORT, () => {
-  console.log(`Server đang chạy tại http://localhost:${PORT}`);
+  console.log(`Server v1.2 đang chạy ở cổng ${PORT} - Auto-Deploy OK`);
 });
